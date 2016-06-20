@@ -1,5 +1,6 @@
 # MCD
 
+## How to use
 First make sure [Docker](https://www.docker.com/) is installed.
 
 To run, simply mount the local directory containing .mcd files (for example "~/mea_recordings") to the container's /data directory.
@@ -32,3 +33,8 @@ Commit changes to image, changing author field and adding ENTRYPOINT:
 docker commit -m "installed MC_DATATOOL" -a "XXXAuthorXXX" -c "ENTRYPOINT python3 /src/mcd_helper.py" XXXContainerIDXXX mcdfork:latest
 ```
 
+## Legal Notice
+
+Please note that MC_Datatool is proprietary software. Please see the following [manual](http://www.multichannelsystems.com/sites/multichannelsystems.com/files/documents/manuals/MC_Rack_Manual.pdf) for its terms of use. No license is provided for MC_DataTool and no restrictions are made in the manual on the distribution of the software. However, "no actions can be taken to decompile, reverse engineer, or otherwise attempt to discover the source code of the software."
+
+The executable file packaged here is identical to this [download link](http://download.multichannelsystems.com/download_data/software/mc_datatool/MC_DataTool-2.6.15.exe).
