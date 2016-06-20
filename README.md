@@ -5,9 +5,11 @@ First make sure [Docker](https://www.docker.com/) is installed.
 
 To run, simply mount the local directory containing .mcd files (for example "~/mea_recordings") to the container's /data directory.
 
-`docker run -v ~/mea_recordings:/data tbenst/mcd`
+`docker run -v ~/mea_recordings:/data --rm tbenst/mcd`
 
 The image will recursively look for .mcd files and convert the electrical channels to .raw. The analog channels will be processed separately into a .analog channel. This design choice makes it easy to run spike sorting software like [Spyking Circus](spyking-circus.readthedocs.org/en/latest/) on the .raw file, while retaining the analog channels for analysis.
+
+The `--rm` flag will remove the mcd docker container when it is finished. Note that the docker image remains local.
 
 ## Developers
 
