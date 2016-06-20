@@ -18,7 +18,7 @@ docker build -t mcdfork .
 docker run -it --link display:xserver --volumes-from display mcdfork /bin/bash
 ```
 
-Connect to the VNC session using e.g. Screen Sharing on Mac OS X. hostname: 0.0.0.0:5900, password:newPW
+Connect to the VNC session using e.g. Screen Sharing on Mac OS X. `hostname: 0.0.0.0:5900`, `password:newPW`
 
 Continue setup in container shell:
 ```
@@ -28,5 +28,7 @@ wine wineboot --init && wine /src/MC_DataTool-2.6.15.exe
 Now install using the GUI. Exit bash after install finishes.
 
 Commit changes to image, changing author field and adding ENTRYPOINT:
-`docker commit -m "installed MC_DATATOOL" -a "XXXAuthorXXX" -c "ENTRYPOINT python3 /src/mcd_helper.py" XXXContainerIDXXX mcdfork:latest`
+```
+docker commit -m "installed MC_DATATOOL" -a "XXXAuthorXXX" -c "ENTRYPOINT python3 /src/mcd_helper.py" XXXContainerIDXXX mcdfork:latest
+```
 
