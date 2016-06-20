@@ -1,0 +1,28 @@
+## Dev
+To build:
+
+```
+docker run -d --name display -e VNC_PASSWORD=newPW -p 5900:5900 suchja/x11server
+docker build -t tbenst/mcd:latest .
+docker run -it --link display:xserver --volumes-from display -v ~/Desktop/test:/data tbenst/mcd /bin/bash
+```
+
+run in container shell:
+```
+wine wineboot --init && wine /src/MC_DataTool-2.6.15.exe
+```
+
+Update:
+docker commit -m "installed MC_DATATOOL" -a "Tyler Benster" XXXContainerIDXXX tbenst/mcd:latest
+
+
+## Production
+To run:
+docker run -v ~/Desktop/test:/data tbenst/mcd
+
+
+## Notes
+will need to re-build and install MC tool via GUI. mcd_helper should glob for .mcd in /mcd & convert each one. No need to use click
+
+
+docker run -d --name display -e VNC_PASSWORD=newPW -p 5900:5900 suchja/x11server
