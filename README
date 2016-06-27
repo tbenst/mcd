@@ -1,3 +1,9 @@
+## How to run:
+
+```
+docker run --rm -v ~/Desktop/test:/data tbenst/mcd
+```
+
 ## Dev
 To build:
 
@@ -12,8 +18,20 @@ run in container shell:
 wine wineboot --init && wine /src/MC_DataTool-2.6.15.exe
 ```
 
-Update:
-docker commit -m "installed MC_DATATOOL" -a "Tyler Benster" XXXContainerIDXXX tbenst/mcd:latest
+docker commit -m "updated" -a "Tyler Benster" -c "CMD python3 /src/mcd_helper.py" cbeaaf55ba4f tbenst/mcd:latest
+
+
+TO UPDATE
+docker run -it -v ~/Desktop/test:/data tbenst/mcd /bin/bash
+docker cp mcd_helper.py cbeaaf55ba4f:/src/
+docker commit -m "updated" -a "Tyler Benster" -c "CMD python3 /src/mcd_helper.py" cbeaaf55ba4f tbenst/mcd:latest
+
+(OLD)
+docker commit -m "about to update" -a "Tyler Benster" -c "ENTRYPOINT /bin/bash" cbeaaf55ba4f tbenst/mcd:latest
+docker restart cbeaaf55ba4f
+docker cp mcd_helper.py cbeaaf55ba4f:/src/
+docker commit -m "updating script" -a "Tyler Benster" -c "ENTRYPOINT python3 /src/mcd_helper.py" daf2144c61a2 tbenst/mcd:latest
+docker run -v ~/Desktop/test:/data tbenst/mcd
 
 
 ## Production
